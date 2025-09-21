@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Coins,
   LayoutDashboard,
@@ -32,9 +33,18 @@ import {
 import { Button } from '../ui/button';
 import { useSidebar } from '@/hooks/use-sidebar';
 
+const menuItems = [
+  { href: '/', label: 'Dashboard', icon: LayoutDashboard, tooltip: 'Dashboard' },
+  { href: '/transaksi', label: 'Transaksi', icon: CreditCard, tooltip: 'Transaksi' },
+  { href: '/laporan', label: 'Laporan', icon: PieChart, tooltip: 'Laporan' },
+  { href: '/anggaran', label: 'Anggaran', icon: Wallet, tooltip: 'Anggaran' },
+  { href: '/pengaturan', label: 'Pengaturan', icon: Settings, tooltip: 'Pengaturan' },
+];
+
 export function AppSidebar() {
   const { state } = useSidebar();
-  
+  const pathname = usePathname();
+
   return (
     <Sidebar>
       <SidebarHeader className="p-4">
@@ -50,46 +60,16 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent className="p-2">
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive tooltip="Dashboard">
-              <Link href="#">
-                <LayoutDashboard />
-                <span>Dashboard</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Transaksi">
-              <Link href="#">
-                <CreditCard />
-                <span>Transaksi</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Laporan">
-              <Link href="#">
-                <PieChart />
-                <span>Laporan</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Anggaran">
-              <Link href="#">
-                <Wallet />
-                <span>Anggaran</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Pengaturan">
-              <Link href="#">
-                <Settings />
-                <span>Pengaturan</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          {menuItems.map((item) => (
+            <SidebarMenuItem key={item.href}>
+              <SidebarMenuButton asChild isActive={pathname === item.href} tooltip={item.tooltip}>
+                <Link href={item.href}>
+                  <item.icon />
+                  <span>{item.label}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
         </SidebarMenu>
       </SidebarContent>
       <SidebarSeparator />
