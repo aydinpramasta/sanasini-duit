@@ -7,7 +7,6 @@ import {
   LayoutDashboard,
   Wallet,
   Settings,
-  PieChart,
   User,
   CreditCard,
 } from 'lucide-react';
@@ -36,9 +35,7 @@ import { useSidebar } from '@/hooks/use-sidebar';
 const menuItems = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard, tooltip: 'Dashboard' },
   { href: '/transaksi', label: 'Transaksi', icon: CreditCard, tooltip: 'Transaksi' },
-  { href: '/laporan', label: 'Laporan', icon: PieChart, tooltip: 'Laporan' },
   { href: '/anggaran', label: 'Anggaran', icon: Wallet, tooltip: 'Anggaran' },
-  { href: '/pengaturan', label: 'Pengaturan', icon: Settings, tooltip: 'Pengaturan' },
 ];
 
 export function AppSidebar() {
