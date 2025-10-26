@@ -51,7 +51,6 @@ export function AppSidebar() {
             <h2 className="text-lg font-bold tracking-tight font-headline truncate">
               SanaSini Duit
             </h2>
-            <p className="text-xs text-muted-foreground">Lite Version</p>
           </div>
         </div>
       </SidebarHeader>
