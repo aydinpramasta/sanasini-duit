@@ -1,4 +1,4 @@
-# **App Name**: SanaSini Duit Lite
+# **App Name**: SanaSini Duit
 
 ## Core Features:
 
